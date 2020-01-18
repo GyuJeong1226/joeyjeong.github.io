@@ -1,0 +1,260 @@
+/* html design */
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+html {
+	background: #fff;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	min-height: 100vh;
+	color: #57585c;
+	color: var(--color-text);
+	background-color: #fff;
+	background-color: var(--color-background);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+/* menu bar Color schemes */
+.demo-ama {
+	--color-text: #9a9da7;
+	--color-background: #fff;
+	--color-link: #32343c;
+	--color-link-hover: #9a9da7;
+}
+
+/* menu bar Fade effect */
+.js body {
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.js body.render {
+	opacity: 1;
+}
+
+a {
+	text-decoration: none;
+	color: #5d93d8;
+	color: var(--color-link);
+	outline: none;
+}
+
+a:hover,
+a:focus {
+	color: #423c2b;
+	color: var(--color-link-hover);
+	outline: none;
+}
+
+.hidden {
+	position: absolute;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+}
+
+.content {
+	position: relative;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	min-height: 100vh;
+	margin: 0 auto;
+	padding: 3em 2em;
+}
+
+.content--fixed {
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	display: grid;
+	align-content: space-between;
+	width: 100%;
+	max-width: none;
+	height: 100vh;
+	padding: 1.5em;
+	pointer-events: none;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: auto auto 4em;
+}
+
+.content--fixed a {
+	pointer-events: auto;
+}
+
+/* menu bar common style */
+.menu {
+	position: relative;
+	z-index: 10;
+}
+
+.menu__item {
+	line-height: 1;
+	position: relative;
+	display: block;
+	margin: 1em 0;
+	outline: none;
+}
+
+.menu__item-name{
+	position: relative;
+	display: inline-block;
+	font-size: 1.25em;
+}
+
+.menu--ama {
+	counter-reset: itemCounter;
+}
+
+.menu--ama .menu__item {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 1.25em;
+	font-weight: 500;
+	margin: 3em;
+	padding-left: 0.5em;
+	color: #32343c;
+}
+
+.menu--ama .menu__item:first-child {
+	--menu-item-color:#9444FF;
+}
+
+.menu--ama .menu__item:nth-child(2) {
+	--menu-item-color:#FF3382;
+}
+
+.menu--ama .menu__item:nth-child(3) {
+	--menu-item-color:#3382FF;
+}
+.menu--ama .menu__item:nth-child(4) {
+	--menu-item-color:#FFB033;
+}
+
+.menu--ama .menu__item::before {
+	content: counter(itemCounter,decimal-leading-zero);
+	font-size: 0.85em;
+	font-weight: bold;
+	position: absolute;
+	right: 100%;
+	bottom: calc(100% - 0.35em);
+	counter-increment: itemCounter;
+	color: #ddd;
+}
+
+.menu--ama .menu__item:hover::before,
+.menu--ama .menu__item:focus::before {
+	color: var(--menu-item-color);
+}
+
+.menu--ama .menu__item-name {
+	font-size: 2.0em;
+	font-weight: 500;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0.5em 0 0 0;
+	white-space: pre;
+	text-transform: lowercase;
+}
+
+.menu--ama .menu__item-name::before,
+.menu--ama .menu__item-name::after {
+	content: '';
+	position: absolute;
+	bottom: 100%;
+	left: 0;
+	width: 2.5em;
+	height: 5px;
+	background: #ddd;
+}
+
+.menu--ama .menu__item-name::after {
+	background: var(--menu-item-color);
+	transform: scale3d(0,1,1);
+	transform-origin: 0% 50%;
+	transition: transform 0.5s;
+}
+
+.menu--ama .menu__item:hover .menu__item-name::after,
+.menu--ama .menu__item:focus .menu__item-name::after {
+	transform: scale3d(1,1,1);
+}
+
+.menu--ama .menu__item-name span {
+	display: inline-block;
+}
+
+[class^="hvr-"] {
+  text-decoration: none;
+  color: #666;
+  background-image:url("../source/img/clouds.gif");
+  background-size: 100% 100%;
+  color: transparent;
+  -webkit-background-clip:text;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* main content section design */
+#fh5co-aside {
+  padding-bottom: 40px;
+  width: 20%;
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#fh5co-main {
+	position: relative;
+  width: 80%;
+  float: right;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+@media screen and (max-width: 2500px) {
+  #fh5co-aside {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  #fh5co-main {
+    width: 70%;
+  }
+}
+
+.fh5co-narrow-content {
+  width: 100%;
+  color: #000;
+}
+
+.Sonata:hover{
+	-webkit-transition: 2.5s;
+	opacity:0.4;
+}
+
+
+.Hamlet:hover{
+	-webkit-transition: 2.5s;
+	opacity:0.4;
+}
+
+.stage{
+	position: relative;
+	top: 125px;
+	left: 80px;
+}
